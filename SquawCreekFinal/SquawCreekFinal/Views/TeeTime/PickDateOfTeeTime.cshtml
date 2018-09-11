@@ -1,0 +1,26 @@
+﻿@model SqualCreekBusinessLayer.entites.TeeTimesForDay
+
+
+@*<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Select A Date
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+@foreach (DateTime date in Model)
+{
+    <li><a href="@Url.Action("ScheduleATeeTime", "TeeTime", date)">@date.ToString("MM/dd/yyyy")</a></li>
+}
+    </ul>
+</div>
+<p>Please Note: we only book 10 days in advance</p>*@
+
+<div id="container">
+    <label for="ddlCategory"><strong>Select Date</strong></label>
+    @Html.DropDownListFor("Select", Model.SelectableTimes, new { id="ddlTime"})
+    <br /><br />
+    <div id="dvCategoryResults">
+        @{Html.RenderPartial("ScheduleATeeTime", Model);}
+    </div>
+</div>  
+

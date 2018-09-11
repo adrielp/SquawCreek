@@ -1,0 +1,75 @@
+﻿<style type="text/css">
+
+    h1{
+        color: green;
+    }
+    .form-control {
+        display: inline-block;
+        width: 40%;
+    }
+
+
+</style>
+
+@model SqualCreekBusinessLayer.entites.TeeTimeBooking
+@{
+   Layout = "~/Views/Shared/_TeeTimeLayout.cshtml"; ;
+}
+
+@using (Html.BeginForm("ScheduleSlot", "TeeTime", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.HiddenFor(m => m.ScheduledTime)
+
+    <div class="container">
+        <div class="row">
+            <img src="~/Content/Images/icon-golf.png" style="float:left"/> <h1>Schedule a Tee Time</h1>
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/Content/Images/scgc03.jpg" class="img-responsive img-rounded" />
+                <br/>
+                <p>Reservations for weekday, weekend or holiday starting times may be made by telephone (817-441-8185) or in person at the Pro Shop.</p>
+
+                    <p>Dues paying golf members may reserve starting times by telephone beginning at 6 a.m. four days in advance of the weekend day or holiday.</p>
+
+                   <p> Non dues paying members may reserve starting times beginning at 9 a.m. four days in advance of the weekend day or holiday.</p>
+
+                  <p>  Anyone may make reservations for weekday play on Friday of the preceding week by telephone beginning at 6 a.m. or in person at the pro shop after 9 a.m.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">Confirm your Tee Time Reservation</div>
+                        <div class="panel-body text-center">
+                        <p>Selected Date & Time:</p>
+                        <label>@Model.ScheduledTime.ToString("MM/dd/yyyy hh:mm")</label>
+
+                        <div class="form-group">
+                            <p>Number of Players:</p>
+                            @Html.DropDownListFor(m => m.NumberOfPlayers, Enumerable.Range(1, 4).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            <p>Will you need a cart?</p>
+                            @Html.CheckBoxFor(m => m.Cart, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            <p>Are you a member?</p>
+                            @Html.CheckBoxFor(m => m.Member, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            <p>Enter your Email Address:</p>
+                            @Html.TextBoxFor(m => m.BookedBy, new { @class = "form-control" })
+                        </div>
+
+                        <button type="submit" class="btn btn-info">Book!</button>
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+<style type="text/css">
+    html {
+        background: url('../../Content/Images/scgc05.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        font-family: sans-serif;
+        padding-top: 100px;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+        width: 100%;
+    }
+
+    body {
+        background: none;
+        text-align: center;
+    }
+
+    .card {
+        width: 50%;
+        display: inline-block;
+    }
+</style>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RequestSuccess</title>
+</head>
+<body>
+
+    
+    <br />
+    <div class="card">
+        <div class="card-header">
+            <img src="~/Content/Images/sq-logo.png" />
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">Tee Time Confirmed</h4>
+            <p class="card-text">Thank you for scheduling your tee time! We look forward to seeing you at our Golf Course. For questions or inquiries or for specific arrangements, call Mike Daniels, our tournament coordinator, at 817-441-8185 and he’ll do the rest!</p>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-success">Go Back</a> 
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</body>
+</html>

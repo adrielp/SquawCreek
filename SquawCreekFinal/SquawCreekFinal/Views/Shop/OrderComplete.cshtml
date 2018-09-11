@@ -1,0 +1,26 @@
+﻿@model SqualCreekBusinessLayer.entites.Cart
+@{
+    ViewBag.Title = "OrderComplete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your order is complete!</h2>
+
+@if (Model.MailTo)
+{
+    <p>Your Confirmation is:</p>
+    @Html.DisplayFor(model => model.OrderConfirmationId)
+    <p>Your order will be shipped next business day.</p>
+    <h4>Thank you!</h4>
+
+}
+else
+{
+
+    <p>Your Confirmation is:</p>
+    @Html.DisplayFor(model => model.OrderConfirmationId)
+    <p>Your order will be ready for you at the Club House for pick up.</p>
+    <p>please provide your id when picking up your order.</p>
+    <h4>Thank you!</h4>
+}
+

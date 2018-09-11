@@ -1,0 +1,32 @@
+﻿@model SqualCreekBusinessLayer.entites.MgmtDailyPortal
+<br/>
+<button class="btn btn-info">Add User</button>
+<br />
+<br />
+
+    <table class="table table-bordered table-responsive">
+        <tr class="active">
+            <th>
+                <h3><span style="font-size:20px">User List</span></h3>
+            </th>
+            <th>
+                <h3><span style="font-size:20px">Admin Functions</span></h3>
+            </th>
+        </tr>
+
+        @foreach (var u in Model.Users)
+        {
+            <tr>
+                <td class="col-xs-10">
+                    <span>@u.Email</span>
+                </td>
+                <td class="col-xs-2">
+                    <span>
+                        <a href="@Url.Action("Action", "Admin", new { @id=u.Id})" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("RemoveUser", "Admin", new { @id=u.Id})" class="btn btn-danger">Remove</a>
+                    </span>
+                </td>
+            </tr>
+        }
+    </table>
+ 

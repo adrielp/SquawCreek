@@ -1,0 +1,118 @@
+﻿<img src="~/Content/Images/headers/about.JPG" class="img-responsive" />
+
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" class="nav_link" data_id="9" href="#home1">About</a></li>
+    <li><a data-toggle="tab" class="nav_link" data_id="10" href="#menu10">History</a></li>
+    <li><a data-toggle="tab" class="nav_link" data_id="11" href="#menu11">Membership</a></li>
+
+</ul>
+
+<div class="tab-content">
+    <div id="home1" class="tab-pane fade in active">
+
+        <div class="container">
+            <section>
+                <div class="page-header" id="features">
+                    <center><h2>Welcome to Squaw Creek Golf Course</h2></center>
+                </div>
+
+                <div class="row top-buffer">
+                    <div class="col-lg-8">
+                        <h3>About Squaw Creek</h3>
+                        <p>Squaw Creek Golf Course, named for the winding creek that comes into play on 12 of the 18 holes of this stunning design, is located in Willow Park, Texas, an easy 20 minute drive from downtown Fort Worth.</p>
+                        
+                        <p>Don’t let the yardage, somewhat short by today’s standards at 6958 yards, fool you.  Squaw Creek’s pecan tree lined fairways, beautiful 30 acre lake, winding creek, surprising elevation changes and tricky undulating greens offer plenty of challenges for the scratch golfer while being extremely enjoyable for all skill levels.</p>
+
+                        <p>Squaw Creek has hosted many Amateur, Collegiate, and Professional events including the PGA Tour Caddis Association Championship on four occasions.</p>
+
+                        <p>Named by the Dallas Morning News as “best bang for the buck” in Dallas/Fort Worth, Squaw Creek is the perfect place to call home for your next golf outing.</p>
+
+                        <p>Why Squaw Creek for your next outing? Besides a beautiful course, competitive rates, fully stocked pro shop, and a top of the line driving range and short game facility, Squaw Creek allows you to bring your own food and beverages, including alcohol.</p>
+
+                        <p>Need more information?  Please call our pro shop at 817-441-8185 and let our experienced staff schedule your next event.</p>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="~/Content/Images/scgc02.jpg" class="img-responsive img-thumbnail center-block" alt="Squaw Creek Golf Course">
+                    </div>
+                </div>
+                <hr>
+                <div class="row top-buffer">
+                    <div class="col-lg-8">
+                        <h3>How Beginning Golfers Can Make Golf More Fun!</h3>
+                        <p>For a beginner, golf can be too competitive, stuffy, and very intimidating. There are way too many complicated rules and expectations. Relax. There may be a time when you want to keep score, know all the rules, or play in a tournament, but until that time comes, try these suggestions:</p>
+                        <ol>
+                            <li>Don't keep score.</li>
+                            <li>Play from the short tees.</li>
+                            <li>Only count shots when you hit the ball.</li>
+                            <li>Play in your tennis shoes; be comfortable.</li>
+                            <li>Move your ball away from trees and rocks.</li>
+                            <li>Skip a hole if you need a break.</li>
+                            <li>Just chip and putt if you want to.</li>
+                            <li>Play with only a couple of clubs and a putter.</li>
+                            <li>Enjoy the scenery.</li>
+                            <li>Talk, tell jokes, laugh at each others’ bad shots.</li>
+                            <li>Be enthusiastic! Give high fives!</li>
+                            <li>Bring your kids.</li>
+                            <li>Tee the ball up everywhere.</li>
+                        </ol>
+                        <p>Squaw Creek Golf Course offers “on course” lessons to help you feel more comfortable on the course. A member of our staff will go with you onto the course to learn basic etiquette and rules. These lessons are free of charge. Call us at 817-441-8185 and schedule yours today!</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="~/Content/Images/scgc07.jpg" class="img-responsive img-thumbnail center-block" alt="How Beginning Golfers Can Make Golf More Fun">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="PageLayout9">
+        </div>
+    </div>
+    <div id="menu10" class="tab-pane fade">
+        @Html.Partial("CourseOne")
+        <br />
+        <div id="PageLayout9">
+        </div>
+    </div>
+    <div id="menu11" class="tab-pane fade">
+        @Html.Partial("CourseTwo")
+        <br />
+        <div id="PageLayout10">
+        </div>
+    </div>
+</div>
+
+
+@section script{
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    $(function () {
+        $(".nav_link").click(function () {
+            //Custom attribute data_id is used to store the ID
+            //Get the ID
+            var id = $(this).attr("data_id");
+            $.ajax({
+                url: '@Url.Action("GolfCoursePartial", "Home")',
+                type: "post",
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ id: id }), //add parameter
+                success: function (data) {
+                    //success
+                    $('#PageLayout'+id).html(data); //populate the tab content.
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        });
+    });
+    </script>
+
+}
+

@@ -1,0 +1,62 @@
+﻿@model SqualCreekBusinessLayer.entites.TeeTimesForDay
+    @{ 
+        Layout = "~/Views/Shared/_TeeTimeLayout.cshtml";
+    }
+
+<style type="text/css">
+    h3{
+        color: green;
+    }
+</style>
+
+<div id="container">
+    <div class="row">
+        <img src="~/Content/Images/icon-golf.png" style="float: left"/><h3>Schedule a Tee Time</h3>
+        <hr/>
+        <p>Please select the date for your tee time.</p>
+        <br/>
+    </div>
+    
+    <label for="ddlTime"><strong>Select Date</strong></label>
+    @Html.DropDownListFor(model => model.SelectableTimes, new SelectList(Model.SelectableTimes), new { @id = "ddlTime"})
+    <br /><br />
+    <div id="progressBar"><img src="~/Content/Images/ajax-loader.gif"/></div>
+    <div id="slotResults">
+    </div>
+</div>  
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#progressBar').show();
+        $(function () {
+            var timeStart = new Date().toLocaleString();
+                 $.ajax({
+                     method: "GET",
+                     url: '@(Url.Action("ScheduleATeeTime","TeeTime"))?date=' + timeStart,
+                     success: function (a, b, c) {
+                         $('#progressBar').hide();
+                         $("#slotResults").html(a);
+                     }
+                 });
+        });
+
+
+        $("#ddlTime").change(function () {
+            $('#slotResults').hide();
+            $('#progressBar').show();
+            var timeVal = $("#ddlTime").val();
+            $.ajax({
+                method: "GET",
+                url: '@(Url.Action("ScheduleATeeTime","TeeTime"))?date=' + timeVal,
+                success: function (a, b, c) {
+                    $('#progressBar').hide();
+                    $("#slotResults").html(a);
+                    $('#slotResults').show();
+                }
+            });
+        });
+    });
+
+    
+
+</script>  

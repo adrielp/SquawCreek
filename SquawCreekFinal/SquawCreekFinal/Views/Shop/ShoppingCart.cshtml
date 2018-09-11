@@ -1,0 +1,78 @@
+﻿@model SqualCreekBusinessLayer.entites.Cart
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
+
+<h2>Complete Your Order</h2>
+@using (Html.BeginForm("DecidePayment", "Shop", FormMethod.Post, new { @class = "from-horizontal", role = "form" }))
+{
+<h4>Current Items</h4>
+foreach (var item in Model.LineItems)
+{
+<p>@item.ItemTitle</p>
+    <p>@item.Price</p>
+    <p>@item.Qty</p>
+    <br/>
+}
+<h3><b>Your Total Amount Due: $@Model.TotalAmount</b></h3>
+
+    for (int i = 0; i < Model.LineItems.Count; i++)
+    {
+        @Html.HiddenFor(model => Model.LineItems[i].Id)
+        @Html.HiddenFor(model => Model.LineItems[i].ItemTitle)
+        @Html.HiddenFor(model => Model.LineItems[i].OrderID)
+        @Html.HiddenFor(model => Model.LineItems[i].Price)
+        @Html.HiddenFor(model => Model.LineItems[i].Qty)
+        @Html.HiddenFor(model => Model.LineItems[i].ShopItemId)
+    }
+
+
+
+
+
+
+    <p>How would you like to receive this order</p>
+    <p>Mail</p> @Html.CheckBoxFor(model => model.MailTo, new { @id="mail"})
+    <p>Pick Up</p>@Html.CheckBoxFor(model => model.PickUp, new { @id = "pickUp" })
+
+    <p>Please Enter Information Below</p>
+    @Html.TextBoxFor(model => model.CustomersName, new { @class = "from-control", @placeholder = "Full Name" })
+    @Html.TextBoxFor(model => model.Address.Street, new { @class="from-control", @placeholder="Street Address"})
+    @Html.TextBoxFor(model => model.Address.City, new { @class = "from-control", @placeholder = "City" })
+    @Html.TextBoxFor(model => model.Address.ZipCode, new { @class = "from-control", @placeholder = "Zip" })
+    @Html.TextBoxFor(model => model.Address.State, new { @class = "from-control", @placeholder = "State" })
+
+    @Html.HiddenFor(model => model.TotalAmount)
+    @Html.HiddenFor(model => model.Address.Street)
+    @Html.HiddenFor(model => model.Address.City)
+    @Html.HiddenFor(model => model.Address.State)
+    <button type="submit" id="checkOut" class="btn btn-primary">Proceed</button>
+
+}
+
+
+
+    <script type="text/javascript">
+        $('#mail').click(function () {
+            $('#pickUp').attr('checked', false);;
+        });
+
+        $('#pickUp').click(function () {
+            $('#mail').attr('checked', false);;
+        });
+
+
+
+        $('#checkOut').click(function () {
+            if ($('#mail').val == false || $('#pickUp').val == false)
+            {
+                alert("Please select Ship or Pick Up before completing");
+                return false;
+            }
+
+        })
+
+    </script>
+    

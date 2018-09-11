@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Squaw Creek Golf Course</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+<!--NAVIGATION BAR IS HERE... FEEL FREE TO WORK WITH WHAT THEY ALREADY HAVE-->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="@Url.Action("Index", "Home")" class="navbar-left"><img style="margin-top: 5px; height: 44px;" src="@Url.Content("~/Content/Images/sq-logo.png")"></a>
+            </div>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+
+
+<!--END OF NAVIGATION BAR-->
+
+    <div class="container body-content">
+        <!--THIS IS WHERE ALL THE BODY CODE WILL GO... YOU DONT NEED TO WORK ABOUT THIS SECTION-->
+        @RenderBody()
+        <!--END OF BODY CODD-->
+
+    </div>
+    <!--FOOTER SECTION OF THE WEB SITE.-->
+    <footer>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Golf Course </h3>
+                        <ul>
+                            <li> <a href="#"> Reserve Tee Time </a> </li>
+                            <li> <a href="#"> Upcoming Gatherings </a> </li>
+                            <li> <a href="#"> Reserve The Course </a> </li>
+                            <li> <a href="#"> Lodging and Dinning </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> School of Golf </h3>
+                        <ul>
+                            <li> <a href="#"> Book a Session </a> </li>
+                            <li> <a href="#"> Rates and Promotions </a> </li>
+                            <li> <a href="#"> Instructors </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Online Store </h3>
+                        <ul>
+                            <li> <a href="#"> Shop </a> </li>
+                            <li> <a href="#"> Gift Cards </a> </li>
+                            <li> <a href="#"> Golf Clubs </a> </li>
+                            <li> <a href="#"> Accessories </a> </li>
+                            <li> <a href="#"> Apparel </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Customer Support </h3>
+                        <ul>
+                            <li> <a href="#"> FAQ </a> </li>
+                            <li> <a href="#"> Contact </a> </li>
+                            <li> <a href="#"> Help Desk </a> </li>
+                            <li> <a href="#"> Order Status </a> </li>
+                            <li> <a href="#"> Returns </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Social </h3>
+                        <ul>
+                            <li>
+                                <div class="input-append newsletter-box text-center">
+                                    <input type="text" class="full text-center" placeholder="Email ">
+                                    <button class="btn btn-success" type="button"> Join our mailing list <i class="fa fa-long-arrow-right"> </i> </button>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="social">
+                            <li> <a href="#"> <i class="fa fa-facebook">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left"> Copyright © 2017 Squaw Creek Golf Course. All right reserved. </p>
+                <div class="pull-right">
+                    <ul class="nav nav-pills payments">
+                        <li><i class="fa fa-cc-visa"></i></li>
+                        <li><i class="fa fa-cc-mastercard"></i></li>
+                        <li><i class="fa fa-cc-amex"></i></li>
+                        <li><i class="fa fa-cc-paypal"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--END OF FOOTER-->
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

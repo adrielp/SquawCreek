@@ -1,0 +1,82 @@
+﻿@model SqualCreekBusinessLayer.entites.PublicModel
+
+
+@using (Html.BeginForm("PostEventRequest", "Event", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <br/>
+    
+    <h4>Contact Us Today!</h4>
+    <p>Please fill out and submit the form bellow. Alternatively, use our contact information on the right to call, fax, or email us directly.</p>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    
+    
+
+
+<div class="container">
+
+    <div class="col-md-8">
+
+        <form action="" class="form-horizontal">
+            <div class="form-group">
+                <label for="user-fname" class="col-lg-2 control-label">First Name</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.SubEventRequest.ContactFirstName, new { @class = "form-control", @placeholder = "Enter your first name" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="user-lname" class="col-lg-2 control-label">Last Name</label>
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(m => m.SubEventRequest.ContactLastName, new { @class = "form-control", placeholder = "Enter Your Last Name" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="user-phone" class="col-lg-2 control-label">Phone</label>
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(m => m.SubEventRequest.ContactPhone, new { @class = "form-control", @Placeholder = "Enter your Phone Number" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="user-email" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(m => m.SubEventRequest.ContactEmail, new { @class = "form-control", @placeholder = "Enter your Email Address" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="user-message" class="col-lg-2 control-label">Message</label>
+                <div class="col-lg-10">
+                    <textarea name="user-message" id="user-information" class="form-control"
+                              cols="20" rows="10" placeholder="Enter Additional Information"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="submit" class="btn btn-success">Submit Request</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="col-md-4">
+        <img src="~/Content/Images/scgc01.jpg" class="img-responsive img-rounded" /><br />
+        <center><img src="~/Content/Images/sq-logo.png" /></center>
+        <img src="~/Content/Images/sera-logo.png" class="img-responsive" />
+        Squaw Creek Golf Course<br />
+        1605 Ranch House Rd.<br />
+        Willow Park, TX 76087<br />
+        <em>Telephone: </em>(817) 441-8185<br />
+        <em>Fax:</em> (817) 441-8185<br/>
+        <em>Email:</em> contact@squawkcreek.com 
+    </div>
+
+</div>
+
+
+}

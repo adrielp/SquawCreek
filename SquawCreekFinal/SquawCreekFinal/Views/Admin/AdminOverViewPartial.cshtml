@@ -1,0 +1,100 @@
+﻿@model SqualCreekBusinessLayer.entites.MgmtDailyPortal
+<style type="text/css">
+   h1 {
+       color:green;
+   }
+</style>
+<br/>
+<div class="container">
+    <div class="row">
+        <img src="~/Content/Images/icon-golf.png" style="float: left;" />
+        <h1>Administrator Panel</h1>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Today's Date: @Model.TodaysDate.ToString("MM/dd/yyy")</h3>
+            <hr/>
+            <h4>Number of Booked Tee Times Today: @Model.TeeTimesCount.ToString()</h4>
+            <h4>Number of Booked Events Today: @Model.EventsCount.ToString()</h4>
+        </div>
+        <div class="col-md-6">
+            <img src="~/Content/Images/scgc01.jpg" class="img-responsive img-rounded" />
+        </div>
+    </div>
+    @if (Model.EventRequests.Count > 0)
+    {
+        <div class="row">
+            <div class="col-mid-12">
+                <h3>New Event Requests</h3>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-bordered table-responsive">
+                <tr class="active">
+                    <th>
+                        <h3><span style="font-size:20px">Contact</span></h3>
+                    </th>
+                    <th>
+                        <h3><span style="font-size:20px">Email</span></h3>
+                    </th>
+                    <th>
+                        <h3><span style="font-size:20px">Phone</span></h3>
+                    </th>
+                    <th>
+                        <h3><span style="font-size:20px">Guests</span></h3>
+                    </th>
+                    <th>
+                        <h3><span style="font-size:20px">Budget</span></h3>
+                    </th>
+                    <th>
+                        <h3><span style="font-size:20px">Admin Functions</span></h3>
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.EventRequests)
+                {
+                    <tr>
+                        <td class="col-xs-2">
+                            <span>@item.ContactFirstName @item.ContactLastName</span>
+                        </td>
+                        <td class="col-xs-2">
+                            <span>@item.ContactEmail</span>
+                        </td>
+                        <td class="col-xs-2">
+                            <span>@item.ContactPhone</span>
+                        </td>
+                        <td class="col-xs-2">
+                            <span>@item.NumberOfGuests</span>
+                        </td>
+                        <td class="col-xs-2">
+                            <span>@item.Budget</span>
+                        </td>
+                        <td class="col-xs-2">
+                            <span>
+                                <a href="@Url.Action("CreateEventFromRequest", "Admin", new { @id = item.Id })" class="btn btn-primary">Approve</a>
+                                <a href="@Url.Action("RemoveEventRequest", "Admin", new { @id=item.Id})" class="btn btn-danger">Deny</a>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-mid-12">
+                <h3>There Currently No Event Requests</h3>
+                <hr />
+            </div>
+        </div>
+    }
+   
+   
+</div>
+
+

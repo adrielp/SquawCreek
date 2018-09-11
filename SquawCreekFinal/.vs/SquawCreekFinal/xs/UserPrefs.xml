@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{7774EF5D-EF6C-4590-B0E3-2A58DFBA1EA4}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SqualCreekBusinessLayer/concrete/Event.cs">
+    <Files>
+      <File FileName="SquawCreekFinal/App_Start/BundleConfig.cs" Line="1" Column="1" />
+      <File FileName="SquawCreekFinal/App_Start/FilterConfig.cs" Line="1" Column="1" />
+      <File FileName="SquawCreekFinal/App_Start/IdentityConfig.cs" Line="87" Column="28" />
+      <File FileName="SquawCreekFinal/App_Start/NinjectWebCommon.cs" Line="1" Column="1" />
+      <File FileName="SquawCreekFinal/App_Start/RouteConfig.cs" Line="1" Column="1" />
+      <File FileName="SquawCreekFinal/App_Start/Startup.Auth.cs" Line="1" Column="1" />
+      <File FileName="SquawCreekFinal/Global.asax" Line="1" Column="1" />
+      <File FileName="SquawCreekFinal/Project_Readme.html" Line="1" Column="1" />
+      <File FileName="SquawCreekFinal/Startup.cs" Line="1" Column="1" />
+      <File FileName="SqualCreekBusinessLayer/concrete/Event.cs" Line="6" Column="7" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SquawCreekFinal PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,0 +1,69 @@
+﻿@model SqualCreekBusinessLayer.entites.MgmtDailyPortal
+<h2>Stock Room</h2>
+<br />
+<a class="btn btn-info" href="@Url.Action("AddShopItem", "Admin")">Add Store Item</a>
+<br />
+<br />
+
+@if (Model.ShopItems.Count > 0)
+{
+    <table class="table table-bordered table-responsive">
+        <tr class="active">
+            <th>
+                <h3><span style="font-size:20px">Item Title</span></h3>
+            </th>
+            <th>
+                <h3><span style="font-size:20px">Description</span></h3>
+            </th>
+            <th>
+                <h3><span style="font-size:20px">Price</span></h3>
+            </th>
+            <th>
+                <h3><span style="font-size:20px">Image Url</span></h3>
+            </th>
+            <th>
+                <h3><span style="font-size:20px">In Stock</span></h3>
+            </th>
+            <th>
+                <h3><span style="font-size:20px">Admin Functions</span></h3>
+            </th>
+        </tr>
+
+        @foreach (var i in Model.ShopItems)
+        {
+            <tr>
+                <td class="col-xs-2">
+                    <span>@i.Title</span>
+                </td>
+                <td class="col-xs-2">
+                    <span>@i.Description</span>
+                </td>
+                <td class="col-xs-2">
+                    <span>@i.Price</span>
+                </td>
+                <td class="col-xs-2">
+                    <span>@i.ImageURL</span>
+                </td>
+                <td class="col-xs-2">
+                    <span>@i.InStock</span>
+                </td>
+                <td class="col-xs-2">
+                    <span>
+                        <a href="@Url.Action("UpdateShopItem", "Admin", new { @id=i.Id})" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("RemoveShopItem", "Admin", new { @id=i.Id})" class="btn btn-danger">Remove</a>
+                    </span>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h4>No items are in stock.</h4>
+}
+
+
+
+
+
+

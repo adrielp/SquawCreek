@@ -1,0 +1,46 @@
+﻿@model SqualCreekBusinessLayer.entites.Cart
+
+@{
+    ViewBag.Title = "CreditCardProcessing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CompleteOrder", "Shop", FormMethod.Post, new { @class="from-horizontal"}))
+{
+    <h2>Credit Card Processing</h2>
+
+    <h3><b>Your Total Amount Due: $@Model.TotalAmount</b></h3>
+
+    <p>@Html.DisplayFor(m => m.CustomersName)</p>
+    <p>@Html.DisplayFor(m => m.Address.Street)</p>
+    <p>@Html.DisplayFor(m => m.Address.City)</p>
+    <p>@Html.DisplayFor(m => m.Address.State)</p>
+    <p>@Html.DisplayFor(m => m.Address.ZipCode)</p>
+
+
+    @Html.HiddenFor(model => model.TotalAmount)
+    @Html.HiddenFor(model => model.Address.Street)
+    @Html.HiddenFor(model => model.Address.City)
+    @Html.HiddenFor(model => model.Address.State)
+
+    for (int i = 0; i < Model.LineItems.Count; i++)
+    {
+        @Html.HiddenFor(model => Model.LineItems[i].Id)
+        @Html.HiddenFor(model => Model.LineItems[i].ItemTitle)
+        @Html.HiddenFor(model => Model.LineItems[i].OrderID)
+        @Html.HiddenFor(model => Model.LineItems[i].Price)
+        @Html.HiddenFor(model => Model.LineItems[i].Qty)
+        @Html.HiddenFor(model => Model.LineItems[i].ShopItemId)
+    }
+    @Html.HiddenFor(model => model.MailTo)
+    @Html.HiddenFor(model => model.PickUp)
+    @Html.HiddenFor(model => model.OrderConfirmationId)
+
+    <input type="text" placeholder="Credit Card Number" class="form-control" />
+    <input type="text" placeholder="Exp Date" class="form-control" />
+    <button type="submit" class="btn btn-primary">Complete Order</button>
+
+}
+
+
+

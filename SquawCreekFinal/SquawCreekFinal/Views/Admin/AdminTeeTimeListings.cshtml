@@ -1,0 +1,59 @@
+﻿@model SqualCreekBusinessLayer.entites.MgmtDailyPortal
+<br/>
+<a href="@Url.Action("TeeTimeScheduler", "TeeTime")" class="btn btn-info">Schedule Tee Time</a>
+<br/>
+<br/>
+
+   @if (Model.TeeTimesCount > 0)
+   {
+        <table class="table table-bordered table-responsive">
+            <tr class="active">
+                <th>
+                    <h3><span style="font-size:20px">Timeslot</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Players</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Booked By</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Cart Rental</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Member</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Admin Functions</span></h3>
+                </th>
+            </tr>
+
+            @foreach (var t in Model.TeeTimes)
+            {
+                <tr>
+                    <td class="col-xs-2">
+                        <span>@t.ScheduleTime.ToString("hh:mm")</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>@t.NumberOfPlayers</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>@t.BookedBy</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>@t.Paid.ToString()</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>@t.Member</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <a href="@Url.Action("CancelTeeTime", "Admin", new { @id=t.Id})" class="btn btn-danger">Cancel</a>
+                    </td>
+                </tr>
+            }
+        </table>
+   }
+   else
+   {
+    <h4>No Tee Times Scheduled for Today.</h4>
+   }

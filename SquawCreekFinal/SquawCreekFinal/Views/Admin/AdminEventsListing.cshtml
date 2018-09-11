@@ -1,0 +1,65 @@
+﻿@model SqualCreekBusinessLayer.entites.MgmtDailyPortal
+<br/>
+<a class="btn btn-info" href="@Url.Action("AddEvent", "Admin")" >Add Event</a>
+<br />
+<br />
+
+    @if (Model.EventsCount > 0)
+    {
+        <table class="table table-bordered table-responsive">
+            <tr class="active">
+                <th>
+                    <h3><span style="font-size:20px">Event Title</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Start Date</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">End Date</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Booked By</span></h3>
+                </th>
+                <th>
+                    <h3><span style="font-size:20px">Admin Functions</span></h3>
+                </th>
+            </tr>
+
+            @foreach (var e in Model.Events)
+            {
+                <tr>
+                    <td class="col-xs-2">
+                        <span>@e.EventTitle</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>@e.StartDate.ToString("MM/dd/yyyy hh:mm")</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>@e.EndDate.ToString("MM/dd/yyyy hh:mm")</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>@e.BookedBy</span>
+                    </td>
+                    <td class="col-xs-2">
+                        <span>
+                        <a href="@Url.Action("EditEvent", "Admin", new { @id=e.Id})" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("RemoveEvent", "Admin", new { @id=e.Id})" class="btn btn-danger">Remove</a>
+                        </span>
+                    </td>
+                </tr>
+             }
+            </table>
+            }
+            else
+            {
+            <h4>No Events Scheduled For Today.</h4>
+            }
+
+
+
+
+
+
+
+
+

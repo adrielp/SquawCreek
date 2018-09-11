@@ -1,0 +1,47 @@
+﻿@model SqualCreekBusinessLayer.entites.TeeTimesForDay
+
+
+@{
+    if (Model.TeeTimesBySlot != null)
+    {
+        <p>@Model.CurrentDate</p>
+
+        <hr />
+        using (Html.BeginForm("", "", FormMethod.Post))
+        {
+
+            <div class="row">
+               
+                    @{
+                        int counter = 0;
+                        foreach (var slot in Model.TeeTimesBySlot)
+                        {
+
+                            counter++;
+
+                            <div class="col-md-2">
+                               
+                                <a href="@Url.Action("ScheduleSlot", "TeeTime", new { date = slot.ScheduleTime.ToString("MM-dd-yyyy hh:mm")})" class="@(slot.BookedBy == string.Empty?"btn btn-success btn-lg btn-block":"btn btn-danger btn-lg btn-block disabled")"><p>@slot.ScheduleTime.ToString("hh:mm tt")</p></a><br />
+                                <!--Changed the button id to btn btn-success to make the buttons green and added a <br /> under each button to create some vertical spacing.-->
+                            </div>
+                            if (counter == 6)
+                            {
+                                counter = 0;
+                                <br />
+                            }
+                        }
+                    }
+                </div>
+        
+
+
+                            }
+                        }
+                        else
+                        {
+                            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        }
+
+}
+
+

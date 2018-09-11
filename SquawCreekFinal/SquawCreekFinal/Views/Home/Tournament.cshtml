@@ -1,0 +1,87 @@
+﻿<img src="~/Content/Images/headers/tournament-registration.JPG" class="img-responsive"/>
+
+    
+<ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" class="nav_link" data_id="12" href="#home2">General Information</a></li>
+        <li><a data-toggle="tab" class="nav_link" data_id="13" href="#menu13">Tournament Rates</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+        <div id="home2" class="tab-pane fade in active">
+
+            <div class="container">
+                <section>
+                    <div class="page-header" id="features">
+                        <h2>Looking for a unique site to host your next outing?</h2>
+                    </div>
+
+                    <div class="row top-buffer">
+                        <div class="col-lg-8">
+                            <h3>Tournaments</h3>
+                            <p>Need to schedule a golf tournament? At Squaw Creek, it couldn’t be easier! Just call Mike Daniels, our tournament coordinator, at 817-441-8185 and he’ll do the rest!</p>
+
+                         <p>Squaw Creek's tournament package includes:
+                            <ol>
+                             <li>green fees</li>
+                             <li>cart rentals</li>
+                             <li>range balls</li>
+                             <li>printed scorecards, cart signs, proximity markers, and leaderboards</li>
+                             <li>gift certificates to our fully stocked Pro Shop</li>
+                             <li>registration tables</li>
+                             <li>and ice is available on site but for an additional charge</li>
+                             </ol>
+                         </p>  
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="~/Content/Images/scgc02.jpg" class="img-responsive img-thumbnail center-block" alt="image">
+                        </div>
+                    </div>
+                </section>
+            </div>
+     
+            <div id="PageLayout8">
+            </div>
+        </div>
+        <div id="menu13" class="tab-pane fade">
+            @Html.Partial("TournamentOne")
+            <br />
+            <div id="PageLayout9">
+            </div>
+        </div>
+        <div id="menu14" class="tab-pane fade">
+            @Html.Partial("TournamentTwo")
+            <br />
+            <div id="PageLayout10">
+            </div>
+        </div>
+    </div>
+
+
+@section script{
+
+    <script type="text/javascript">
+    $(function () {
+        $(".nav_link").click(function () {
+            //Custom attribute data_id is used to store the ID
+            //Get the ID
+            var id = $(this).attr("data_id");
+            $.ajax({
+                url: '@Url.Action("Tournament", "Home")',
+                type: "post",
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ id: id }), //add parameter
+                success: function (data) {
+                    //success
+                    $('#PageLayout'+id).html(data); //populate the tab content.
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        });
+    });
+    </script>
+
+}

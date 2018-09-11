@@ -1,0 +1,139 @@
+﻿@model SquawCreekFinal.Models.RegisterViewModel
+@{
+    ViewBag.Title = "User Registration";
+    Layout = null;
+}
+
+
+
+<style type="text/css">
+
+    html {
+        background: url('../../Content/Images/scgc03.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+
+        font-family: sans-serif;
+        padding-top: 100px;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+        width: 100%;
+    }
+
+    body {
+        background: none;
+        text-align: center; 
+    }
+    
+    .form-control{
+        padding: .5rem .75rem;
+        font-size: 1rem;
+        line-height: 1.25;
+        color: #464a4c;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: .25rem;
+        background-clip: padding-box;
+    }
+
+    .buttons {
+        display: inline-block;
+        width: 220px;
+    }
+
+    .btn-register {
+        color: #fff;
+        background-color: #5cd85c;
+        border-color: #5cb85c;
+        font-weight:400;
+        line-height: 1.25;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        padding: .5rem 1rem;
+        border-radius: .25rem;
+        background-clip: padding-box;
+        float: right;
+    }
+
+    .btn-back{
+        color: #5cd85c;
+        background-color: white;
+        border-color: #5cb85c;
+        font-weight:400;
+        line-height: 1.25;
+        white-space: nowrap;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        padding: .5rem 1rem;
+        border-radius: .25rem;
+        background-clip: padding-box;
+        float:left;
+        font-size:smaller;
+        text-decoration: none;
+    }
+
+    .text-danger {
+        color: orangered;
+    }
+</style>
+
+    <img src="~/Content/Images/sq-logo.png" />
+    <h2>@ViewBag.Title</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+
+        <div class="container">
+            @Html.AntiForgeryToken()
+            <p>Create a new account.</p>
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            <div class="form-group">
+
+                <!-- @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" }) -->
+                <div class="col-md-10">
+                    @*<input type="text" placeholder="Email" class="form-control">*@
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email Address" })
+                </div>
+            </div>
+            <div class="form-group">
+
+
+
+                <!-- @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" }) -->
+                <div class="col-md-10">
+                    <br />
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+            </div>
+            <div class="form-group">
+
+
+
+                <!-- @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" }) -->
+                <div class="col-md-10">
+                    <br />
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <br /> 
+                    <div class="buttons">
+                        <a href="@Url.Action("Index", "Home")" class="btn-back">Go Back</a>             
+                        <input type="submit" class="btn-register" value="Register" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

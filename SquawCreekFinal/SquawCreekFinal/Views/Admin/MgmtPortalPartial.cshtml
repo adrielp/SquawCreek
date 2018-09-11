@@ -1,0 +1,85 @@
+﻿@model SqualCreekBusinessLayer.entites.MgmtDailyPortal
+
+
+
+<div class="container">
+    <ul class="nav nav-tabs" id="displayTabs">
+        <li class="active"><a data-toggle="tab" class="nav_link" data_id="1" href="#home">Daily View</a></li>
+        <li><a data-toggle="tab" class="nav_link" data_id="2" href="#menu1">Events</a></li>
+        <li><a data-toggle="tab" class="nav_link" data_id="3" href="#menu2">Tee Times</a></li>
+        <li><a data-toggle="tab" class="nav_link" data_id="4" href="#menu3">Users</a></li>
+        <li><a data-toggle="tab" class="nav_link" data_id="5" href="#menu4">Store</a></li>
+        <li><a data-toggle="tab" id="eventsViewing" class="nav_link" data_id="6" href="#menu5">Calendar</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+
+            @Html.Partial("AdminOverViewPartial", Model)
+            <div id="ProductsDiv1">
+            </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+           @Html.Partial("AdminEventsListing", Model)
+            <br />
+            <div id="ProductsDiv2">
+            </div>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            @Html.Partial("AdminTeeTimeListings", Model)
+            <br />
+            <div id="ProductsDiv3">
+            </div>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            @Html.Partial("AdminUsersControl", Model)
+            <br />
+            <div id="ProductsDiv4">
+            </div>
+        </div>
+        <div id="menu4" class="tab-pane fade">
+            @Html.Partial("AdminStoreControl")
+            <br />
+            <div id="ProductsDiv5">
+            </div>
+        </div>
+        <div id="menu5" class="tab-pane fade">
+            @Html.Partial("AdminCalendarControl")
+            <br />
+            <div id="ProductsDiv6">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section script{
+
+    <script type="text/javascript">
+    $(function () {
+        $(".nav_link").click(function () {
+            //Custom attribute data_id is used to store the ID
+            //Get the ID
+            var id = $(this).attr("data_id");
+            $.ajax({
+                url: '@Url.Action("MgmtPortalPartial", "Home")',
+                type: "post",
+                dataType: "html",
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ id: id }), //add parameter
+                success: function (data) {
+                    //success
+                    $('#ProductsDiv' + id).html(data); //populate the tab content.
+                    $('#calendar').fullCalendar('render');
+                    $('#ProductsDiv' + id).tab('show');
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        });
+    });
+
+
+    </script>
+}

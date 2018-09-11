@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Squaw Creek Golf Course</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <!--NAVIGATION BAR IS HERE... FEEL FREE TO WORK WITH WHAT THEY ALREADY HAVE-->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="@Url.Action("Index", "Home")" class="navbar-left"><img style="margin-top: 5px; height: 44px;" src="@Url.Content("~/Content/Images/sq-logo.png")"></a>
+            </div>
+
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-info" style="margin-top: 5px; margin-bottom:5px;">Log off</a></li>
+                    </ul>
+                }
+            
+        </div>
+    </nav>
+
+
+    <!--END OF NAVIGATION BAR-->
+
+    <div class="container body-content">
+        <!--THIS IS WHERE ALL THE BODY CODE WILL GO... YOU DONT NEED TO WORK ABOUT THIS SECTION-->
+        @RenderBody()
+
+
+        <!--END OF BODY CODD-->
+    </div>
+    <br/>
+        <!--FOOTER SECTION OF THE WEB SITE.-->
+            <footer>
+                <div class="footer" id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-2 col-sm-4 col-xs-6">
+                                <h3> Club Events </h3>
+                                <ul>
+                                    <li> <a href="#"> New Event </a> </li>
+                                    <li> <a href="#"> Manage Events </a> </li>
+                                    <li> <a href="#"> Event Settings </a> </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                                <h3> Membership </h3>
+                                <ul>
+                                    <li> <a href="#"> Add User </a> </li>
+                                    <li> <a href="#"> Manage Users </a> </li>
+                                    <li> <a href="#"> Membership Settings </a> </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                                <h3> Online Store </h3>
+                                <ul>
+                                    <li> <a href="#"> Add New Item </a> </li>
+                                    <li> <a href="#"> Remove Item </a> </li>
+                                    <li> <a href="#"> Search/Edit Items </a> </li>
+                                    <li> <a href="#"> Statistics </a> </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                                <h3> Support </h3>
+                                <ul>
+                                    <li> <a href="#"> Support Tickets </a> </li>
+                                    <li> <a href="#"> Manage Orders </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <p class="pull-left"> Copyright © 2017 Squaw Creek Golf Course. All right reserved. </p>
+                        <div class="pull-right">
+                            <ul class="nav nav-pills payments">
+                                <li><i class="fa fa-cc-visa"></i></li>
+                                <li><i class="fa fa-cc-mastercard"></i></li>
+                                <li><i class="fa fa-cc-amex"></i></li>
+                                <li><i class="fa fa-cc-paypal"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--END OF FOOTER-->
+        
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                editable: false,
+                async: false,
+
+                events: {
+
+                    url: "@Url.Action("EventData", "Event")"
+                }
+            });
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                $('#calendar').fullCalendar('render');
+                $('#displayTabs #eventsViewing').tab('show');
+            });
+
+        });
+
+
+        $('#eventsViewing').click(function () {
+
+                $('#calendar').fullCalendar('render');
+            $('#displayTabs #eventsViewing').tab('show');
+        });
+
+    </script>
+
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+                $('#datetimepicker2').datetimepicker();
+            });
+        </script>
+
+</body>
+</html>

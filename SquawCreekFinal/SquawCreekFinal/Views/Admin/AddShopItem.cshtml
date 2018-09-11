@@ -1,0 +1,52 @@
+﻿@model SqualCreekBusinessLayer.entites.ShopItem
+
+
+@{
+    ViewBag.Title = "Stock Room";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddShopItem", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="user-fname" class="col-lg-2 control-label">Item Title</label>
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="user-fname" class="col-lg-2 control-label">Description</label>
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="user-fname" class="col-lg-2 control-label">Image URL</label>
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.ImageURL, new { @class = "form-control", @placeholder = "paste an image URL Here"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="user-fname" class="col-lg-2 control-label">Price</label>
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="user-fname" class="col-lg-2 control-label">In Stock</label>
+        <div class="col-md-9">
+            @Html.CheckBoxFor(m => m.InStock, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-info"> Submit </button>
+
+}

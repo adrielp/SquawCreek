@@ -1,0 +1,2 @@
+/Users/adriel/Projects/SquawCreek/SquawCreekFinal/SqualCreekBusinessLayer/obj/Debug/SqualCreekBusinessLayer.csprojAssemblyReference.cache
+/Users/adriel/Projects/SquawCreek/SquawCreekFinal/SqualCreekBusinessLayer/obj/Debug/SqualCreekBusinessLayer.csproj.CoreCompileInputs.cache

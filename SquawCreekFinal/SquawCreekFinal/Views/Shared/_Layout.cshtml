@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Squaw Creek Golf Course</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <!--NAVIGATION BAR IS HERE... FEEL FREE TO WORK WITH WHAT THEY ALREADY HAVE-->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="@Url.Action("Index", "Home")" class="navbar-left"><img style="margin-top: 5px; height: 54px;" src="@Url.Content("~/Content/Images/sq-logo.png")"></a>
+                <a href="@Url.Action("TeeTimeScheduler", "TeeTime")" target="_blank" class="navbar-right btn btn-info" style="margin-top: 10px;">Book Tee Time</a>
+            </div>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+
+
+    <!--END OF NAVIGATION BAR-->
+
+
+    <div class="container body-content">
+        <!--THIS IS WHERE ALL THE BODY CODE WILL GO... YOU DONT NEED TO WORK ABOUT THIS SECTION-->
+        @RenderBody()
+        <!--END OF BODY CODD-->
+    </div>
+    <br />
+
+    <!--FOOTER SECTION OF THE WEB SITE.-->
+    <footer>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                        <h3> About Us </h3>
+                        <center>
+                            <img src="~/Content/Images/sq-logo.png" />
+                            <img src="~/Content/Images/sera-logo.png" />
+                        </center>
+                        <!--<p><br />Squaw Creek Golf Course, named for the winding creek that comes into play on 12 of the 18 holes of this stunning design, is located in Willow Park, Texas, an easy 20 minute drive from downtown Fort Worth.</p>-->
+                        <p><br />This website was developed as a Senior Project for DeVry University under the name Squaw Creek Golf Course. <br />Team E Developers: <br /> David Coulson | George Hatzigeorgiou <br /> Adriel Perkins | Felix Martinez <br /> Keith Pullen | Matthew Hunt</p>
+                    </div>
+                    <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Hours of Operation </h3>
+                        <img src="~/Content/Images/scgc01.jpg" class="img-rounded" height="138px"/>
+                        <ul>
+                            <li> Mon-Thurs: 5:00am - 10:00pm </li>
+                            <li> Friday: 5:00am - 8:00pm </li>
+                            <li> Saturday: 8:00am - 8:00pm </li>
+                            <li> Sunday: 10:00am - 6:00pm </li>       
+                        </ul>
+                    </div>
+                    <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                        <h3>Where we are</h3>
+                        <center>
+                            <img src="~/Content/Images/SquawCreekLocateUsMap-small.jpg" class="img-r" />
+                            <ul>
+                                <li>Squaw Creek Golf Course</li>
+                                <li>1605 Ranch House Rd.</li>
+                                <li>Willow Park, TX 76087</li>
+                            </ul>
+                        </center>
+                    </div>
+                    <div class="col-lg-3  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Connect with Us </h3>
+                        <ul>
+                            <li>Phone: (817) 441-8185</li>
+                            <li>Fax: (817) 441-8185</li>
+                            <li>Email: contact@squawkcreek.com</li>
+                        </ul>
+                            <ul>
+                                <li>
+                                   @Html.Partial("_MailListAdd")
+                                </li>
+                            </ul>
+                            <ul class="social">
+                                <li> <a href="https://www.facebook.com/CERAfortworth"> <i class="fa fa-facebook">   </i> </a> </li>
+                                <li> <a href="http://www.twitter.com"> <i class="fa fa-twitter">   </i> </a> </li>
+                                <li> <a href="http://www.googleplus.com"> <i class="fa fa-google-plus">   </i> </a> </li>
+                                <li> <a href="https://www.linkedin.com/company-beta/10475157/?pathWildcard=10475157"> <i class="fa fa-linkedin">   </i> </a> </li>
+                                <li> <a href="https://www.instagram.com/cerafortworth/"> <i class="fa fa-instagram">   </i> </a> </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left"> Copyright © 2017 Squaw Creek Golf Course. All rights reserved. </p>
+                <div class="pull-right">
+                    <ul class="nav nav-pills payments">
+                        <li><i class="fa fa-cc-visa"></i></li>
+                        <li><i class="fa fa-cc-mastercard"></i></li>
+                        <li><i class="fa fa-cc-amex"></i></li>
+                        <li><i class="fa fa-cc-paypal"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--END OF FOOTER-->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    @*Javascript for calendar functions*@
+    <script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                editable: false,
+                async: false,
+
+                events: {
+                  
+                    url: "@Url.Action("EventData", "Event")"
+                }
+            });
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                $('#calendar').fullCalendar('render');
+                $('#displayTabs #eventsViewing').tab('show');
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#eventsViewing').click(function () {
+
+            $('#calendar').fullCalendar('render');
+            $('#displayTabs #eventsViewing').tab('show');
+        });
+
+    </script>
+
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+                $('#datetimepicker2').datetimepicker();
+            });
+    </script>
+
+  
+
+
+</body>
+</html>

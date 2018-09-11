@@ -1,0 +1,26 @@
+﻿@model SqualCreekBusinessLayer.entites.PublicModel
+
+@using (Html.BeginForm("ShoppingCart", "Shop", FormMethod.Post, new { @class = "from-horizontal", role = "form" }))
+{
+
+    for (var i = 0; i < Model.ShopItems.Count; i++)
+    {
+        string imURL = Html.DisplayFor(model => model.ShopItems[i].ImageURL).ToString();
+
+        
+            <div class="col-md-4">
+                @Html.HiddenFor(model => model.ShopItems[i].Id)
+                <h3>@Html.DisplayFor(model => model.ShopItems[i].Title)</h3>@Html.HiddenFor(model => model.ShopItems[i].Title)
+                <img src="@imURL" width="304" height="236" class="img-responsive img-thumbnail" />
+                <h4>@Html.DisplayFor(model => model.ShopItems[i].Description)</h4>@Html.HiddenFor(model => model.ShopItems[i].Description)
+                <h4>@Html.DisplayFor(model => model.ShopItems[i].Price)</h4>@Html.HiddenFor(model => model.ShopItems[i].Price)
+                @Html.EditorFor(model => model.ShopItems[i].Qty)
+            </div>
+        
+    }
+    
+    <div class="row">
+        <button type="submit" class="btn btn-success" style="margin-top: 50px">Start Order</button>
+    </div>
+}
+
